@@ -28,9 +28,6 @@ apps:
       - unity7
       - screen-inhibit-control
       
- 
- 
-      
 parts:
   freetube:
     source: https://github.com/FreeTubeApp/FreeTube/releases/download/v0.18.0-beta/freetube_0.18.0_amd64.deb
