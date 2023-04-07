@@ -27,12 +27,18 @@ apps:
       - removable-media
       - unity7
       - screen-inhibit-control
-      
+
+plugs:
+  browser-sandbox:
+    interface: browser-support
+    allow-sandbox: true
+
 parts:
   freetube:
     source: https://github.com/FreeTubeApp/FreeTube/releases/download/v0.18.0-beta/freetube_0.18.0_amd64.deb
     plugin: dump
     override-pull: |
+      set -eu
       craftctl default
-      chmod 4755 ./opt/FreeTube/chrome-sandbox
+      chmod 0755 ./opt/FreeTube/chrome-sandbox
       rm -rf usr/share/applications/freetube.desktop 
