@@ -14,7 +14,7 @@ architectures:
                 
 apps:
   freetube-snap:
-    command: opt/FreeTube/freetube --no-sandbox
+    command: opt/FreeTube/freetube --no-sandbox --disable-seccomp-filter-sandbox
     extensions: [gnome]
     environment: 
             GTK_USE_PORTAL: "1"
