@@ -14,7 +14,7 @@ architectures:
                 
 apps:
   freetube-snap:
-    command: usr/bin/freetube
+    command: /opt/FreeTube/freetube
     extensions: [gnome]
     common-id: snap.community.freetube
     environment: 
