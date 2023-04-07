@@ -1,0 +1,213 @@
+name: audacious-snap
+base: core22
+adopt-info: audacious-snap
+summary: Lightweight Open Source Music player
+description: |
+  Audacious is a Lightweight Gtk + Music Player.
+grade: stable
+confinement: strict
+compression: lzo
+
+architectures:
+  - build-on: amd64
+    build-for: amd64
+                
+apps:
+  audacious-snap:
+    command: usr/bin/audacious
+    extensions: [gnome]
+    common-id: org.community.audacious
+    environment:
+            GTK_USE_PORTAL: 1
+    plugs:
+      - home
+      - audio-playback
+      - alsa
+      - gsettings
+      - pulseaudio
+      - bluez
+      - bluetooth-control
+      - media-control
+      - network-status
+      - network
+      - network-bind
+      - raw-usb
+      - optical-drive
+      - network-status
+      - removable-media
+      - unity7
+      - screen-inhibit-control
+      
+ 
+ 
+      
+parts:
+  audacious-snap:
+    source: https://github.com/audacious-media-player/audacious.git
+    plugin: nil
+    build-packages:
+      - curl
+      - build-essential
+      - make
+      - git
+      - autotools-dev
+      - automake
+      - autoconf
+      - autopoint
+      - libtool
+      - libtool-bin
+      
+    
+    override-pull: |
+      craftctl default
+      craftctl set version=$(git describe --tags)
+      git clone https://github.com/audacious-media-player/audacious.git audacious
+     
+   
+    override-build: |
+      craftctl default
+      cd audacious
+      ./autogen.sh
+      ./configure --enable-gtk3 --disable-qt --disable-dbus --with-buildstamp='Snapcraft' --prefix=/usr
+      make -j$CRAFT_PARALLEL_BUILD_COUNT PREFIX=/usr
+      make PREFIX=/usr DESTDIR=${CRAFT_PART_INSTALL} install
+      make clean  
+    
+    stage-packages:
+      - libcue2
+      - liblirc-client0
+      - liblirc0
+      - libadplug-2.3.3-0
+      - libbinio1v5
+      - libsdl2-2.0-0
+      - libxss1
+      - libdecor-0-0
+      - libfluidsynth3
+      - libinstpatch-1.0-2
+      - libcddb2
+      - libcdio19
+      - libcdio-cdda2
+      - libopusfile0
+      - libpipewire-0.3-0
+      - libsndio7.0
+      - libmms0
+      - libneon27
+  
+  audacious-plugins:
+    after: [audacious-snap]
+    source: https://github.com/audacious-media-player/audacious-plugins.git 
+    plugin: nil
+    build-packages:
+      - curl
+      - build-essential
+      - make
+      - git
+      - autotools-dev
+      - automake
+      - autoconf
+      - autopoint
+      - libtool
+      - libtool-bin    
+      - libcdio19
+      - libcdio-utils
+      - libcdio-dev
+      - libcdio-cdda2
+      - libcdio-cdda-dev
+      - libcdio++-dev
+      - libcdio++1
+      - libcddb2
+      - libcddb2-dev
+      - libadplug-2.3.3-0
+      - libadplug-dev
+      - adplug-utils
+      - oggfwd
+      - oggz-tools
+      - libvorbis-dev
+      - libvorbis0a
+      - vorbisgain
+      - xmms2-plugin-all
+      - libopus-dev
+      - libopus0
+      - libopusfile-dev
+      - libopusfile0
+      - opus-tools
+      - flac
+      - libflac++-dev
+      - libflac++6v5
+      - libflac-dev
+      - libflac8
+      - fluidsynth
+      - libfluidsynth-dev
+      - libfluidsynth3
+      - libmpg123-0
+      - libmpg123-dev
+      - wavpack
+      - libwavpack-dev
+      - libwavpack1
+      - libcue2
+      - libcue-dev
+      - libpipewire-0.3-0
+      - libpipewire-0.3-common
+      - libpipewire-0.3-dev
+      - libpipewire-0.3-modules
+      - libspa-0.2-bluetooth
+      - libspa-0.2-dev
+      - libspa-0.2-jack
+      - libspa-0.2-modules
+      - libneon27
+      - libneon27-dev
+      - libgtk2.0-dev
+      - libgtk2.0-0
+      - libgtk2.0-bin
+      - libgtk2.0-cil
+      - libgtk2.0-cil-dev  
+      - ffmpeg
+      - libmms0
+      - libmms-dev
+      - faac
+      - aac-enc
+      - libavcodec-extra
+      - libavformat-extra
+      - libavutil56
+      - libmodplug1
+      - libopenmpt0
+      - libopenmpt-modplug1
+      - libsidplayfp6
+      - libbs2b0
+      - libsamplerate0
+      - libsoxr0
+      - libsoxr-lsr0
+      - lirc
+      - liblirc-client0
+      - liblirc0
+      - liblirc-dev
+      - liblirc0
+      - pulseaudio-module-lirc
+      - lirc-x
+      - lirc-drv-irman
+      - libaudcore5
+      
+    override-pull: |
+      craftctl default
+      git clone https://github.com/audacious-media-player/audacious-plugins.git audacious-plugins
+      
+    override-build: |
+      craftctl default
+      cd audacious-plugins
+      ./autogen.sh
+      ./configure --enable-gtk3 --disable-qt --prefix=/usr
+      make -j$CRAFT_PARALLEL_BUILD_COUNT PREFIX=/usr
+      make PREFIX=/usr DESTDIR=${CRAFT_PART_INSTALL} install
+      make clean  
+      
+   
+      
+     
+  
+ 
+      
+      
+      
+     
+   
+   
