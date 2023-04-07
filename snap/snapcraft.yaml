@@ -24,6 +24,7 @@ apps:
       - audio-playback
       - network
       - raw-usb
+      - browser-sandbox
       - removable-media
       - unity7
       - screen-inhibit-control
