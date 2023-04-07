@@ -28,7 +28,10 @@ apps:
       - removable-media
       - unity7
       - screen-inhibit-control
-
+    
+    slots:
+      - mpris
+    
 plugs:
   shmem:
     interface: shared-memory
