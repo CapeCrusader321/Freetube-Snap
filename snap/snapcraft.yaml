@@ -28,7 +28,7 @@ apps:
       - removable-media
       - unity7
       - screen-inhibit-control
-    
+      
     slots:
       - mpris
     
