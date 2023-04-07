@@ -35,5 +35,5 @@ parts:
     override-pull: |
       set -eu
       craftctl default
-      chmod 4755 ./opt/FreeTube/chrome-sandbox
+      chmod 0755 ./opt/FreeTube/chrome-sandbox
       rm -rf usr/share/applications/freetube.desktop 
