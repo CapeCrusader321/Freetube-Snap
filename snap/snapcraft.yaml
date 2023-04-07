@@ -14,9 +14,8 @@ architectures:
                 
 apps:
   freetube-snap:
-    command: opt/FreeTube/freetube
+    command: opt/FreeTube/freetube --no-sandbox
     extensions: [gnome]
-    common-id: snap.community.freetube
     environment: 
             GTK_USE_PORTAL: 1
     plugs:
@@ -24,16 +23,16 @@ apps:
       - audio-playback
       - network
       - raw-usb
-      - browser-sandbox
+      - shmem
       - removable-media
       - unity7
       - screen-inhibit-control
 
 plugs:
-  browser-sandbox:
-    interface: browser-support
-    allow-sandbox: true
-
+  shmem:
+    interface: shared-memory
+    private: true
+  
 parts:
   freetube:
     source: https://github.com/FreeTubeApp/FreeTube/releases/download/v0.18.0-beta/freetube_0.18.0_amd64.deb
@@ -42,4 +41,5 @@ parts:
       set -eu
       craftctl default
       chmod 0755 ./opt/FreeTube/chrome-sandbox
-      rm -rf usr/share/applications/freetube.desktop 
+   #sed -i 's|Icon=brave-browser|Icon=/opt/brave.com/brave/product_logo_128\.png|g' usr/share/applications/brave-browser.desktop
+   #rm -rf usr/share/applications/freetube.desktop
