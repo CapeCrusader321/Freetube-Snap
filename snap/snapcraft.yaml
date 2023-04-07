@@ -17,7 +17,8 @@ apps:
     command: opt/FreeTube/freetube --no-sandbox
     extensions: [gnome]
     environment: 
-            GTK_USE_PORTAL: 1
+            GTK_USE_PORTAL: "1"
+            TMPDIR: $XDG_RUNTIME_DIR
     plugs:
       - home
       - audio-playback
