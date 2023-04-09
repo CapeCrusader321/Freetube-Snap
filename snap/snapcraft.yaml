@@ -16,17 +16,23 @@ apps:
   freetube-snap:
     command: opt/FreeTube/freetube --no-sandbox --disable-seccomp-filter-sandbox
     extensions: [gnome]
+    desktop: usr/share/applications/freetube.desktop
     environment: 
-            GTK_USE_PORTAL: "1"
+            GTK_USE_PORTAL: '1'
             TMPDIR: $XDG_RUNTIME_DIR
     plugs:
       - home
       - audio-playback
       - network
+      - network-bind
+      - browser-support
+      - network-status
       - raw-usb
       - shmem
       - removable-media
       - unity7
+      - unity8
+      - ubuntu-download-manager
       - screen-inhibit-control
       
     slots:
@@ -36,19 +42,9 @@ plugs:
   shmem:
     interface: shared-memory
     private: true
-  
-slots:
-  mpris:
-    interface: mpris
-    name: chromium  
-  
+
 parts:
   freetube:
     source: https://github.com/FreeTubeApp/FreeTube/releases/download/v0.18.0-beta/freetube_0.18.0_amd64.deb
     plugin: dump
-    override-pull: |
-      set -eu
-      craftctl default
-      chmod 0755 ./opt/FreeTube/chrome-sandbox
-   #sed -i 's|Icon=brave-browser|Icon=/opt/brave.com/brave/product_logo_128\.png|g' usr/share/applications/brave-browser.desktop
-   #rm -rf usr/share/applications/freetube.desktop
+    
