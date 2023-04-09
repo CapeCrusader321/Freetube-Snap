@@ -16,7 +16,6 @@ apps:
   freetube-snap:
     command: opt/FreeTube/freetube --no-sandbox --disable-seccomp-filter-sandbox
     extensions: [gnome]
-    desktop: usr/share/applications/freetube.desktop
     environment: 
             GTK_USE_PORTAL: '1'
             TMPDIR: $XDG_RUNTIME_DIR
