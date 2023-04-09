@@ -34,8 +34,11 @@ apps:
       - ubuntu-download-manager
       - screen-inhibit-control
       
-    slots:
-      - mpris
+slots:
+  mpris:
+    interface: mpris
+    name: org.mpris.MediaPlayer2.freetube
+      
     
 plugs:
   shmem:
