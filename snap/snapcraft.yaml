@@ -16,8 +16,7 @@ apps:
   freetube-snap:
     command: opt/FreeTube/freetube --no-sandbox --disable-seccomp-filter-sandbox
     extensions: [gnome]
-    environment: 
-            GTK_USE_PORTAL: '1'
+    environment:
             TMPDIR: $XDG_RUNTIME_DIR
     plugs:
       - home
@@ -29,17 +28,13 @@ apps:
       - raw-usb
       - shmem
       - removable-media
-      - unity7
-      - unity8
       - ubuntu-download-manager
       - screen-inhibit-control
-      
+
 slots:
   mpris:
     interface: mpris
     name: org.mpris.MediaPlayer2.freetube
-      
-    
 plugs:
   shmem:
     interface: shared-memory
@@ -47,6 +42,6 @@ plugs:
 
 parts:
   freetube:
-    source: https://github.com/FreeTubeApp/FreeTube/releases/download/v0.18.0-beta/freetube_0.18.0_amd64.deb
+    source: https://github.com/FreeTubeApp/FreeTube/releases/download/v$SNAPCRAFT_PROHECT_VERSION-beta/freetube_$SNAPCRAFT_PROJECT_VERSION_amd64.deb
     plugin: dump
-    
+
