@@ -30,7 +30,10 @@ apps:
       - removable-media
       - ubuntu-download-manager
       - screen-inhibit-control
-
+    
+    slots:
+      - mpris
+      
 slots:
   mpris:
     interface: mpris
