@@ -38,6 +38,7 @@ slots:
   mpris:
     interface: mpris
     name: org.mpris.MediaPlayer2.freetube
+    
 plugs:
   shmem:
     interface: shared-memory
