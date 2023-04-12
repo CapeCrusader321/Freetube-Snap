@@ -35,6 +35,7 @@ apps:
       - network-status
       - raw-usb
       - shmem
+      - unity7
       - removable-media
       - ubuntu-download-manager
       - screen-inhibit-control
