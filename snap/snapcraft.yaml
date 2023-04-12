@@ -11,11 +11,19 @@ compression: lzo
 architectures:
   - build-on: amd64
     build-for: amd64
+    
+slots:
+  freetube-snap:
+    interface: dbus
+    bus: session
+    name: io.freetubeapp.FreeTube
+                
                 
 apps:
   freetube-snap:
     command: opt/FreeTube/freetube --no-sandbox --disable-seccomp-filter-sandbox
     extensions: [gnome]
+    common-id: io.freetubeapp.FreeTube
     environment:
             TMPDIR: $XDG_RUNTIME_DIR
     plugs:
@@ -30,12 +38,9 @@ apps:
       - removable-media
       - ubuntu-download-manager
       - screen-inhibit-control
- 
-slots:
-  mpris:
-    interface: mpris
-    name: org.mpris.MediaPlayer2.freetube
-    
+    slots:
+      - mpris
+
 plugs:
   shmem:
     interface: shared-memory
