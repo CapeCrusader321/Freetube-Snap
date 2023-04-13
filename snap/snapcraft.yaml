@@ -7,6 +7,7 @@ description: |
 grade: stable
 confinement: strict
 compression: lzo
+icon: snap/gui/freetube.svg
 
 architectures:
   - build-on: amd64
@@ -26,6 +27,7 @@ apps:
     common-id: io.freetubeapp.FreeTube
     environment:
             TMPDIR: $XDG_RUNTIME_DIR
+    desktop: snap/gui/freetube.desktop        
     plugs:
       - home
       - audio-playback
