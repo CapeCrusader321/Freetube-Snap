@@ -42,6 +42,10 @@ apps:
     slots:
       - mpris
 
+slots:
+  mpris:
+    interface: mpris
+    name: chromium
 plugs:
   shmem:
     interface: shared-memory
