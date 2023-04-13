@@ -41,9 +41,7 @@ apps:
       - removable-media
       - ubuntu-download-manager
       - screen-inhibit-control
-    slots:
-      - mpris
-      
+     
 plugs:
   shmem:
     interface: shared-memory
