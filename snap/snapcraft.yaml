@@ -14,10 +14,7 @@ architectures:
     build-for: amd64
     
 slots:
-  freetube-snap:
-    interface: dbus
-    bus: session
-    name: io.freetubeapp.FreeTube
+  
                 
                 
 apps:
@@ -41,7 +38,9 @@ apps:
       - removable-media
       - ubuntu-download-manager
       - screen-inhibit-control
-     
+    slots:
+      - mpris
+      
 plugs:
   shmem:
     interface: shared-memory
@@ -50,7 +49,10 @@ slots:
   mpris:
     interface: mpris
     name: chromium
-
+  freetube-snap:
+    interface: dbus
+    bus: session
+    name: io.freetubeapp.FreeTube
 
 parts:
   freetube:
