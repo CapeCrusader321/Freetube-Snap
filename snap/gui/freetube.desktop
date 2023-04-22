@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=FreeTube
-Exec=freetube-snap --no-sandbox --disable-seccomp-filter-sandbox %U
+Exec=freetube-snap %U
 Terminal=false
 Type=Application
 Icon=${SNAP}/meta/gui/freetube.svg
