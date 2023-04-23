@@ -5,7 +5,6 @@ summary: Free & Open Source Youtube Client.
 description: |
   Freetube is a Electron Based FLOSS Youtube Client.
 grade: stable
-icon: usr/share/icons/hicolor/scalable/apps/freetube.svg
 confinement: strict
 compression: lzo
 
