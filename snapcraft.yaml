@@ -14,10 +14,13 @@ architectures:
 
 apps:
   freetube-snap:
-    command: opt/FreeTube/freetube --no-sandbox  #--disable-seccomp-filter-sandbox
+    command: opt/FreeTube/freetube --no-sandbox --disable-seccomp-filter-sandbox
     extensions: [gnome]
     common-id: io.freetubeapp.FreeTube
-    desktop: usr/share/applications/freetube.desktop      
+    desktop: usr/share/applications/freetube.desktop   
+    environment:
+      GTK_USE_PORTAL: "1"
+      TMPDIR: $XDG_RUNTIME_DIR
     plugs:
       - home
       - audio-playback
