@@ -1,6 +1,6 @@
 name: freetube-snap
 base: core22
-version: 0.18.0
+adopt-info: freetube
 summary: Free & Open Source Youtube Client.
 description: |
   Freetube is a Electron Based FLOSS Youtube Client.
