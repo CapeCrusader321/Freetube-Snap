@@ -1,6 +1,6 @@
 name: freetube-snap
 base: core22
-adopt-info: freetube
+version: 0.18.0
 summary: Free & Open Source Youtube Client.
 description: |
   Freetube is a Electron Based FLOSS Youtube Client.
@@ -13,7 +13,7 @@ architectures:
 
 apps:
   freetube-snap:
-    command: opt/FreeTube/freetube --no-sandbox --disable-seccomp-filter-sandbox
+    command: opt/FreeTube/freetube --no-sandbox
     extensions: [gnome]
     common-id: io.freetubeapp.FreeTube
     desktop: usr/share/applications/freetube.desktop   
@@ -50,12 +50,6 @@ slots:
 
 parts:
   freetube:
-    source: https://github.com/FreeTubeApp/FreeTube.git
+    source: https://github.com/FreeTubeApp/FreeTube/releases/download/v0.18.0-beta/freetube_0.18.0_amd64.deb
     plugin: dump
-    override-pull: |
-      craftctl default
-      craftctl set version=$(git describe --tags --abbrev=0 | cut -c 2-)
-      VER="$(git describe --tags --abbrev=0 | cut -c 2-)"
-      curl -LO https://github.com/FreeTubeApp/FreeTube/releases/download/v${VER}-beta/freetube_${VER}_amd64.deb
-     
-    #https://github.com/FreeTubeApp/FreeTube/releases/download/v0.18.0-beta/freetube_0.18.0_amd64.deb
+    
