@@ -25,8 +25,8 @@ apps:
       - audio-playback
       - network
       - network-bind
-      - browser-support
       - network-status
+      - browser-support
       - shmem
       - unity7
       - removable-media
@@ -50,6 +50,12 @@ slots:
 
 parts:
   freetube:
-    source: https://github.com/FreeTubeApp/FreeTube/releases/download/v0.18.0-beta/freetube_0.18.0_amd64.deb
+    source: https://github.com/FreeTubeApp/FreeTube.git
     plugin: dump
-
+    override-pull: |
+      craftctl default
+      craftctl set version=$(git describe --tags --abbrev=0 | cut -c 2-)
+      VER="$(git describe --tags --abbrev=0 | cut -c 2-)"
+      curl -LO https://github.com/FreeTubeApp/FreeTube/releases/download/v${VER}-beta/freetube_${VER}_amd64.deb
+     
+    #https://github.com/FreeTubeApp/FreeTube/releases/download/v0.18.0-beta/freetube_0.18.0_amd64.deb
