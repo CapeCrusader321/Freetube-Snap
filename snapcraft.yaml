@@ -13,7 +13,7 @@ architectures:
 
 apps:
   freetube-snap:
-    command: opt/FreeTube/freetube --no-sandbox
+    command: opt/FreeTube/freetube --no-sandbox --disable-seccomp-filter-sandbox
     extensions: [gnome]
     common-id: io.freetubeapp.FreeTube
     desktop: usr/share/applications/freetube.desktop   
